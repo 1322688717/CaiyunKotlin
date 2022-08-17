@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/home_page">
+
+    <fragment android:id="@+id/home_page" >
+
+        <action
+            android:id="@+id/action_home_page_to_like_page"
+            app:destination="@id/like_page" />
+    </fragment>
+    <fragment android:id="@+id/like_page" >
+
+        <action
+            android:id="@+id/action_like_page_to_my_page"
+            app:destination="@id/my_page" />
+    </fragment>
+
+    <fragment android:id="@+id/my_page" />
+</navigation>
