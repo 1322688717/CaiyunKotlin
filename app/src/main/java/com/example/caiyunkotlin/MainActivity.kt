@@ -1,11 +1,13 @@
 package com.example.caiyunkotlin
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.caiyunkotlin.databinding.ActivityMainBinding
+import com.example.common_lib.statusbar.StatusBarUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,9 +19,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         //抛出空指针异常
         setContentView(binding!!.root)
-
-
-         val navController = Navigation.findNavController(this,R.id.fragmentContainerView)
+         val navController : NavController = Navigation.findNavController(this,R.id.fragmentContainerView)
         NavigationUI.setupWithNavController(binding!!.bottomNavigationView,navController)
+
+        StatusBarUtil.initStatusBar(this)
     }
+
 }

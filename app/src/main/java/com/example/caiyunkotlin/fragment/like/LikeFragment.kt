@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.caiyunkotlin.R
 
-class likeFragment : Fragment() {
+class LikeFragment : Fragment() {
 
     companion object {
-        fun newInstance() = likeFragment()
+        fun newInstance() = LikeFragment()
     }
 
     private lateinit var viewModel: LikeViewModel
@@ -20,7 +20,7 @@ class likeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_like, container, false)
+        return inflater.inflate(R.layout.fragment_like2, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

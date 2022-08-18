@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/home_page">
-
-    <fragment android:id="@+id/home_page" >
-
-        <action
-            android:id="@+id/action_home_page_to_like_page"
-            app:destination="@id/like_page" />
-    </fragment>
-    <fragment android:id="@+id/like_page" >
-
-        <action
-            android:id="@+id/action_like_page_to_my_page"
-            app:destination="@id/my_page" />
-    </fragment>
-
-    <fragment android:id="@+id/my_page" />
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.caiyunkotlin.fragment.home.HomeFragment"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" />
+    <fragment
+        android:id="@+id/likeFragment"
+        android:name="com.example.caiyunkotlin.fragment.like.LikeFragment"
+        android:label="fragment_like2"
+        tools:layout="@layout/fragment_like2" />
+    <fragment
+        android:id="@+id/myFragment"
+        android:name="com.example.caiyunkotlin.fragment.My.MyFragment"
+        android:label="fragment_my2"
+        tools:layout="@layout/fragment_my2" />
 </navigation>
