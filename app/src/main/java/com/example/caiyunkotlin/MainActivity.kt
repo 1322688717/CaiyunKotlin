@@ -23,6 +23,13 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding!!.bottomNavigationView,navController)
 
         StatusBarUtil.initStatusBar(this)
+
+        initview()
+    }
+
+    private fun initview() {
+
+
     }
 
 }

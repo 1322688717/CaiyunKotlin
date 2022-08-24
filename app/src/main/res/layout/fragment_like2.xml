@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".fragment.like.LikeFragment">
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/rc_like"
+<!--   <androidx.recyclerview.widget.RecyclerView-->
+<!--       android:id="@+id/rc_like"-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="match_parent"/>-->
+   <View
        android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+       android:layout_height="22dp"
+       />
+   <androidx.appcompat.widget.Toolbar
+       android:id="@+id/toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:minHeight="?attr/actionBarSize"
+       android:theme="?attr/actionBarTheme" >
 
-</FrameLayout>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="壁纸"
+          android:textSize="24dp"
+          android:textStyle="bold"
+          android:layout_gravity="center"
+          />
+<!--      <ImageView-->
+<!--          android:layout_width="wrap_content"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:background="@drawable/icon_home"-->
+<!--          />-->
+
+
+   </androidx.appcompat.widget.Toolbar>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rc_wallpaper"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="70dp"
+          android:background="#E6E6E6"
+          />
+
+   </LinearLayout>
+
+
+
+
+</LinearLayout>

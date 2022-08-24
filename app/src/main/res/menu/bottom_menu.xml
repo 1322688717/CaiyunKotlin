@@ -4,8 +4,15 @@
     <item
         android:title="主页"
         android:id="@+id/homeFragment"
-        android:icon="@drawable/icon_home"
+        android:icon="@drawable/icon_like"
         />
-    <item android:title="喜欢" android:id="@+id/likeFragment"    android:icon="@drawable/icon_home"/>
-    <item android:title="我的" android:id="@+id/myFragment"   android:icon="@drawable/icon_home"/>
+
+    <item android:title="喜欢"
+        android:id="@+id/likeFragment"
+        android:icon="@drawable/ic_my"
+        />
+
+    <item android:title="我的"
+        android:id="@+id/myFragment"
+        android:icon="@drawable/icon_home"/>
 </menu>

@@ -2,21 +2,22 @@ package com.example.caiyunkotlin.fragment.like
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.caiyunkotlin.R
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.caiyunkotlin.adapter.AdapterLike
 import com.example.caiyunkotlin.bean.BeanLike
+import com.example.caiyunkotlin.databinding.FragmentLike2Binding
 import com.google.gson.Gson
-import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.fragment_like2.*
 import okhttp3.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -52,23 +53,20 @@ height	string	返回图片高度
  */
 class LikeFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = LikeFragment()
-    }
-    private var picture : String? = null
-    private val url : String? = "https://api.btstu.cn/sjbz/api.php"
-
+    private val url : String = "https://service.picasso.adesk.com/v1/vertical/vertical?limit=30&skip=180&adult=false&first=0&order=hot"
     private lateinit var viewModel: LikeViewModel
+    private var binding : FragmentLike2Binding? = null
+    private var adapter : AdapterLike? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_like2, container, false)
-
-        initData()
+        binding = FragmentLike2Binding.inflate(inflater,container,false)
+        RequestOptions()
         initView()
-        return view
+        return binding!!.root
     }
 
     private fun initData() {
@@ -81,36 +79,41 @@ class LikeFragment : Fragment() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                TODO("Not yet implemented")
-
+                Log.d("TAG", "e$e")
             }
 
             override fun onResponse(call: Call, response: Response) {
-                TODO("Not yet implemented")
-                val body = response.body?.string()
-                val jsonObject = JSONObject(body)
-                //val json = Gson().fromJson(jsonObject,BeanLike::class.java)
-                picture = jsonObject.optString("imgurl")
+                Log.d("tag","response===${response}")
+                val jsonobj   = JSONObject(response.body!!.string())
+                //这里是利用gson解析
+                val json = Gson().fromJson(jsonobj.toString(), BeanLike::class.java)
+                //这里是直接拿json对象一层一层拿自己想要的
+//                val res : JSONObject? = jsonobj.optJSONObject("res")
+//                val vertical : JSONArray? = res?.optJSONArray("vertical")
+//                val itemObj : JSONObject = vertical!!.optJSONObject(0)
+//                val img : String = itemObj.optString("img")
+//                Log.e("tag","img==$img")
+                activity!!.runOnUiThread {
+                    binding!!.rcWallpaper.layoutManager = GridLayoutManager(activity,2)
+                    adapter = AdapterLike(json.res.vertical,activity!!)
+                    binding!!.rcWallpaper.adapter = adapter
+                }
 
             }
-
         })
     }
 
     private fun initView() {
-//        rc_like.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-//        rc_like.adapter = AdapterLike(picture!!)
-        rc_like.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        val adapter = AdapterLike(picture!!)
-        rc_like.adapter = adapter
-
+        initData()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
-        // TODO: Use the ViewModel
     }
+
+
+
 
 }
 

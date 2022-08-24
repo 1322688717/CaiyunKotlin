@@ -1,36 +1,55 @@
 package com.example.caiyunkotlin.adapter
 
+import android.R
 import android.app.Activity
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.caiyunkotlin.R
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.example.caiyunkotlin.activity.WallPaperActivity
+import com.example.caiyunkotlin.bean.Vertical
 import kotlinx.android.synthetic.main.item_like.view.*
 
-class AdapterLike (private var like_url: String) : RecyclerView.Adapter<AdapterLike.MyViewHolder>() {
+
+class AdapterLike (private var vertical: List<Vertical>,private var activity: Activity) : RecyclerView.Adapter<AdapterLike.MyViewHolder>() {
 
 
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val img_picture : ImageView = itemView.findViewById(com.example.caiyunkotlin.R.id.img_picture)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_like,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(com.example.caiyunkotlin.R.layout.item_like,parent,false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
-        Glide.with(holder.itemView.img_picture)
-            .load(like_url)
+
+        Log.w("TAG","img==${vertical.get(0).img}")
+
+        val options = RequestOptions.bitmapTransform(RoundedCorners(75)) //图片圆角为30
+        Glide.with(activity)
+            .load(vertical[position].img)
+            .apply(options)
             .into(holder.itemView.img_picture)
+
+        holder.itemView.img_picture.setOnClickListener {
+         var intent = Intent(activity,WallPaperActivity::class.java)
+            intent.putExtra("img",vertical[position].img)
+            activity.startActivity(intent)
+
+        }
     }
 
     override fun getItemCount(): Int {
-        return 1
+        return vertical.size
     }
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var img_picture : ImageView = itemView.findViewById(R.id.img_picture)
-    }
+
 }
