@@ -2,12 +2,14 @@ package com.example.caiyunkotlin.adapter
 
 import android.R
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -17,7 +19,7 @@ import com.example.caiyunkotlin.bean.Vertical
 import kotlinx.android.synthetic.main.item_like.view.*
 
 
-class AdapterLike (private var vertical: List<Vertical>,private var activity: Activity) : RecyclerView.Adapter<AdapterLike.MyViewHolder>() {
+class AdapterLike (private var vertical: List<Vertical>,private var activity: FragmentActivity) : RecyclerView.Adapter<AdapterLike.MyViewHolder>() {
 
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

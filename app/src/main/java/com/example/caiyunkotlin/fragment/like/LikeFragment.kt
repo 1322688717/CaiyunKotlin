@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -64,6 +66,7 @@ class LikeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLike2Binding.inflate(inflater,container,false)
+        viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
         RequestOptions()
         initView()
         return binding!!.root
@@ -104,7 +107,15 @@ class LikeFragment : Fragment() {
     }
 
     private fun initView() {
-        initData()
+
+        viewModel.getLikeBean(url,requireActivity())
+        // initData()
+
+        binding!!.rcWallpaper.layoutManager = GridLayoutManager(activity, 2)
+        viewModel.likeBean.observe(viewLifecycleOwner, Observer {
+            adapter = AdapterLike(it.res.vertical, requireActivity())
+            binding!!.rcWallpaper.adapter = adapter
+        })
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
