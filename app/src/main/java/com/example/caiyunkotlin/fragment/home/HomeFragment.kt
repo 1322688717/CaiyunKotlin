@@ -7,29 +7,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.example.caiyunkotlin.R
+import com.example.caiyunkotlin.databinding.FragmentHome2Binding
 
 class HomeFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
+    private val url : String = "https://api.uomg.com/api/rand.qinghua?format=json"
     private lateinit var viewModel: HomeViewModel
+    private lateinit var binding : FragmentHome2Binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        Log.e("Tag","创建视图方法")
-        return inflater.inflate(R.layout.fragment_home2, container, false)
+        binding =  FragmentHome2Binding.inflate(layoutInflater)
+        return binding.root
     }
-
+  //inflater.inflate(R.layout.fragment_home2, container, false)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.setErathy(url,requireActivity())
+        viewModel.erathy.observe(viewLifecycleOwner, Observer {
+            binding.tvEarthy.text = it
+        })
+
     }
 
 }

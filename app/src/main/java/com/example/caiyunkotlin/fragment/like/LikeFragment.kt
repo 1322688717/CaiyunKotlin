@@ -66,51 +66,11 @@ class LikeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLike2Binding.inflate(inflater,container,false)
-        viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
-        RequestOptions()
-        initView()
         return binding!!.root
     }
 
-    private fun initData() {
-        val request = Request.Builder().url(url!!).build()
-        val client = OkHttpClient.Builder()
-            .connectTimeout(2,TimeUnit.SECONDS)
-            .writeTimeout(2,TimeUnit.SECONDS)
-            .readTimeout(2,TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true).build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.d("TAG", "e$e")
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                Log.d("tag","response===${response}")
-                val jsonobj   = JSONObject(response.body!!.string())
-                //这里是利用gson解析
-                val json = Gson().fromJson(jsonobj.toString(), BeanLike::class.java)
-                //这里是直接拿json对象一层一层拿自己想要的
-//                val res : JSONObject? = jsonobj.optJSONObject("res")
-//                val vertical : JSONArray? = res?.optJSONArray("vertical")
-//                val itemObj : JSONObject = vertical!!.optJSONObject(0)
-//                val img : String = itemObj.optString("img")
-//                Log.e("tag","img==$img")
-                activity!!.runOnUiThread {
-                    binding!!.rcWallpaper.layoutManager = GridLayoutManager(activity,2)
-                    adapter = AdapterLike(json.res.vertical,activity!!)
-                    binding!!.rcWallpaper.adapter = adapter
-                }
-
-            }
-        })
-    }
-
     private fun initView() {
-
-        viewModel.getLikeBean(url,requireActivity())
-        // initData()
-
+        viewModel.setLikeBean(url,requireActivity())
         binding!!.rcWallpaper.layoutManager = GridLayoutManager(activity, 2)
         viewModel.likeBean.observe(viewLifecycleOwner, Observer {
             adapter = AdapterLike(it.res.vertical, requireActivity())
@@ -121,6 +81,7 @@ class LikeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
+        initView()
     }
 
 

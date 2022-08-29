@@ -18,34 +18,30 @@ import java.util.concurrent.TimeUnit
 class LikeViewModel : ViewModel() {
     var likeBean = MutableLiveData<BeanLike>()
 
-    init {
+        fun setLikeBean(url : String,activity: Activity) {
+            val request = Request.Builder().url(url!!).build()
+            val client = OkHttpClient.Builder()
+                .connectTimeout(2, TimeUnit.SECONDS)
+                .writeTimeout(2, TimeUnit.SECONDS)
+                .readTimeout(2, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true).build()
 
-    }
-
-        fun getLikeBean(url : String,activity: Activity) {
-        val request = Request.Builder().url(url!!).build()
-        val client = OkHttpClient.Builder()
-            .connectTimeout(2, TimeUnit.SECONDS)
-            .writeTimeout(2, TimeUnit.SECONDS)
-            .readTimeout(2, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true).build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.d("TAG", "e$e")
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                Log.d("tag","response===${response}")
-                val jsonobj   = JSONObject(response.body!!.string())
-
-                //这里是利用gson解析
-                val json = Gson().fromJson(jsonobj.toString(), BeanLike::class.java)
-                activity.runOnUiThread {
-                    likeBean.value = json
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.d("TAG", "e$e")
                 }
 
-                //这里是直接拿json对象一层一层拿自己想要的
+                override fun onResponse(call: Call, response: Response) {
+                    Log.d("tag","response===${response}")
+                    val jsonobj   = JSONObject(response.body!!.string())
+
+                    //这里是利用gson解析
+                    val json = Gson().fromJson(jsonobj.toString(), BeanLike::class.java)
+                    activity.runOnUiThread {
+                        likeBean.value = json
+                    }
+
+                    //这里是直接拿json对象一层一层拿自己想要的
 //                val res : JSONObject? = jsonobj.optJSONObject("res")
 //                val vertical : JSONArray? = res?.optJSONArray("vertical")
 //                val itemObj : JSONObject = vertical!!.optJSONObject(0)
@@ -59,11 +55,11 @@ class LikeViewModel : ViewModel() {
 
 
 
-            }
-        })
+                }
+            })
     }
 
-    fun setLikeBean(){
+    fun getLikeBean(url : String,activity: Activity) {
 
     }
 

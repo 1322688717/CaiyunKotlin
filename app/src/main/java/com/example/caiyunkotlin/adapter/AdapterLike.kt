@@ -23,7 +23,6 @@ class AdapterLike (private var vertical: List<Vertical>,private var activity: Fr
 
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val img_picture : ImageView = itemView.findViewById(com.example.caiyunkotlin.R.id.img_picture)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -35,14 +34,14 @@ class AdapterLike (private var vertical: List<Vertical>,private var activity: Fr
 
         Log.w("TAG","img==${vertical.get(0).img}")
 
-        val options = RequestOptions.bitmapTransform(RoundedCorners(75)) //图片圆角为30
+        val options = RequestOptions.bitmapTransform(RoundedCorners(50)) //图片圆角为30
         Glide.with(activity)
             .load(vertical[position].img)
             .apply(options)
             .into(holder.itemView.img_picture)
 
         holder.itemView.img_picture.setOnClickListener {
-         var intent = Intent(activity,WallPaperActivity::class.java)
+         val intent = Intent(activity,WallPaperActivity::class.java)
             intent.putExtra("img",vertical[position].img)
             activity.startActivity(intent)
 
