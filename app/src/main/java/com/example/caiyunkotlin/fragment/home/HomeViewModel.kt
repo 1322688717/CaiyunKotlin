@@ -4,47 +4,50 @@ import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.caiyunkotlin.api.RequestResponse
 import com.example.caiyunkotlin.bean.ErathyBean
+import com.example.caiyunkotlin.bean.SaoBean
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import okhttp3.*
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 class HomeViewModel : ViewModel() {
     var erathy  = MutableLiveData<String>()
+    var sao = MutableLiveData<String>()
 
     init {
         erathy.value = "土味情话"
     }
 
-    fun setErathy(url: String,activity: Activity){
-        val request = Request.Builder().url(url!!).build()
-        val client = OkHttpClient.Builder()
-            .connectTimeout(2, TimeUnit.SECONDS)
-            .writeTimeout(2, TimeUnit.SECONDS)
-            .readTimeout(2, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true).build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-
+    fun setSao(){
+        RequestResponse.UomgService.getErathy("json").enqueue(object : Callback<ErathyBean>{
+            override fun onResponse(call: Call<ErathyBean>, response: Response<ErathyBean>) {
+                erathy.value = response.body()?.content
             }
 
-            override fun onResponse(call: Call, response: Response) {
-                 var gson  = Gson()
-                var jsonstr = JSONObject(response.body!!.string())
-                var erathyBean : ErathyBean =  gson.fromJson(jsonstr.toString(),ErathyBean::class.java)
-                activity.runOnUiThread(){
-                    erathy.value = erathyBean.content
-                }
+            override fun onFailure(call: Call<ErathyBean>, t: Throwable) {
+                erathy.value = "网络请求错误"
+            }
+        })
+    }
+
+    fun setErathy(){
+        RequestResponse.vvhService.getSao("json").enqueue(object : Callback<SaoBean>{
+            override fun onResponse(call: Call<SaoBean>, response: Response<SaoBean>) {
+                sao.value = response.body()?.ishan
+            }
+
+            override fun onFailure(call: Call<SaoBean>, t: Throwable) {
+                erathy.value = "网络请求错误"
             }
 
         })
     }
 
-    fun getErathy() {
-
-    }
 }

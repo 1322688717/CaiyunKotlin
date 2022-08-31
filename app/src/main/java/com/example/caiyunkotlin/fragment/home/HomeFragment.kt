@@ -13,7 +13,7 @@ import com.example.caiyunkotlin.databinding.FragmentHome2Binding
 
 class HomeFragment : Fragment() {
 
-    private val url : String = "https://api.uomg.com/api/rand.qinghua?format=json"
+
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding : FragmentHome2Binding
 
@@ -24,15 +24,21 @@ class HomeFragment : Fragment() {
         binding =  FragmentHome2Binding.inflate(layoutInflater)
         return binding.root
     }
-  //inflater.inflate(R.layout.fragment_home2, container, false)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        viewModel.setErathy(url,requireActivity())
+        initView()
+    }
+
+    private fun initView() {
+        viewModel.setErathy()
         viewModel.erathy.observe(viewLifecycleOwner, Observer {
             binding.tvEarthy.text = it
         })
 
+        viewModel.setSao()
+        viewModel.sao.observe(viewLifecycleOwner, Observer {
+            binding.tvSao.text = it
+        })
     }
-
 }
