@@ -31,18 +31,21 @@
         tools:layout_editor_absoluteY="23dp">
 
         <TextView
+            android:id="@+id/tv_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="武汉"
             android:textSize="25sp"
             />
         <TextView
+            android:id="@+id/tv_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="32°"
             android:textSize="40sp"
             />
         <TextView
+            android:id="@+id/tv_wheather_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="小雨"
@@ -71,8 +74,9 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_forcast_weather"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_200"/>
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="wrap_content"

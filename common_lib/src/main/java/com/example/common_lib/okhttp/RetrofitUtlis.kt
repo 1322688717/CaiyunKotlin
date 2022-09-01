@@ -28,6 +28,7 @@ object RetrofitUtlis {
         when (type){
             1 -> Base_URL = "https://api.vvhan.com"  //韩小韩API接口站
             2 -> Base_URL = "https://api.uomg.com"  //UomgAPI 接口网站
+            3 -> Base_URL = "https://api.seniverse.com/"  //心知天气
         }
         return Base_URL
     }

@@ -7,5 +7,7 @@ object RequestResponse {
 
     val UomgService = RetrofitUtlis.create(APIService::class.java, 2)
 
+    val weatherService = RetrofitUtlis.create(APIService::class.java,3)
+
 
 }
