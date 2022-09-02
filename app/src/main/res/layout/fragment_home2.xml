@@ -36,12 +36,14 @@
             android:layout_height="wrap_content"
             android:text="武汉"
             android:textSize="25sp"
+            android:textColor="@color/white"
             />
         <TextView
             android:id="@+id/tv_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="32°"
+            android:textColor="@color/white"
             android:textSize="40sp"
             />
         <TextView
@@ -49,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="小雨"
+            android:textColor="@color/white"
             android:textSize="25sp"
             />
         <LinearLayout
@@ -60,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="高温 33°"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 />
             <TextView
@@ -67,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="低温 25°"
                 android:textSize="25sp"
+                android:textColor="@color/white"
                 />
 
         </LinearLayout>
@@ -76,13 +81,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_forcast_weather"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="tip：感冒低发期，天气舒适，请注意多吃蔬菜水果，多喝水哦"
             android:textSize="16sp"
+            android:textColor="@color/white"
             />
 
 
@@ -93,6 +100,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text=""
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -104,6 +112,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text=""
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />

@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.caiyunkotlin.R
+import com.example.caiyunkotlin.databinding.FragmentHome2Binding
+import com.example.caiyunkotlin.databinding.FragmentMy2Binding
 
 class MyFragment : Fragment() {
 
@@ -14,19 +16,27 @@ class MyFragment : Fragment() {
         fun newInstance() = MyFragment()
     }
 
+    private lateinit var binding: FragmentMy2Binding
     private lateinit var viewModel: MyViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_my2, container, false)
+        binding = FragmentMy2Binding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        initView()
+
+    }
+
+    private fun initView() {
+
     }
 
 }

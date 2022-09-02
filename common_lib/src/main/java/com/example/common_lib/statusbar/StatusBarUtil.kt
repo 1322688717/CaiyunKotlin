@@ -15,7 +15,9 @@ object StatusBarUtil {
  */
     fun initStatusBar(activity: Activity) {
 
-    ImmersionBar.with(activity).init()
+    ImmersionBar.with(activity)
+        .statusBarDarkFont(true)   //状态栏字体是深色，不写默认为亮色
+        .init()
 
     }
 
