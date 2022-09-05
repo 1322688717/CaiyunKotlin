@@ -66,8 +66,11 @@ class LikeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLike2Binding.inflate(inflater,container,false)
+        viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
+        initView()
         return binding!!.root
     }
+
 
     private fun initView() {
         viewModel.setLikeBean(url,requireActivity())
@@ -77,15 +80,6 @@ class LikeFragment : Fragment() {
             binding!!.rcWallpaper.adapter = adapter
         })
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
-        initView()
-    }
-
-
-
 
 }
 

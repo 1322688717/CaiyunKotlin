@@ -35,6 +35,11 @@ android {
     viewBinding{
         enabled = true
     }
+    kapt {
+        arguments {
+            arg("com.example.caiyunkotlin", project.getName())
+        }
+    }
 }
 
 dependencies {
@@ -86,5 +91,8 @@ dependencies {
     implementation "android.arch.lifecycle:livedata:1.1.0"
 
 
+// ARouter
+    implementation  'com.alibaba:arouter-api:1.5.2'
+    annotationProcessor   'com.alibaba:arouter-compiler:1.5.2'
 
 }
