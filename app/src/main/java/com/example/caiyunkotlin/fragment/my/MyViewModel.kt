@@ -1,10 +1,11 @@
-package com.example.caiyunkotlin.fragment.My
+package com.example.caiyunkotlin.fragment.my
 
+import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
-import com.example.caiyunkotlin.R
 
 class MyViewModel : ViewModel() {
     var headPortrait = MutableLiveData<String>()
@@ -19,7 +20,10 @@ class MyViewModel : ViewModel() {
 
     }
 
-    fun getNickname() {
+    fun getNickname(activity : Activity) {
+        val sharedPreferences: SharedPreferences = activity.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        var mName = sharedPreferences.getString("name", "中国青年")
+        nickname.value = mName!!
     }
 
     fun getIndSignature(){}

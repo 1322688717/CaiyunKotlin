@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,16 +18,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".PersonalCenterActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".BaseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.WallPaperActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +29,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ui.login.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".activity.SetNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PersonalCenterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".base.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WallPaperActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"></activity>
     </application>
 
 </manifest>

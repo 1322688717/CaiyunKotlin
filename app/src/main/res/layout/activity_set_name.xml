@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SetNameActivity"
+    android:background="#E8E8E8"
+    android:orientation="vertical"
+    >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_22"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+      >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="设置名字"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/dp_10"
+            app:srcCompat="@mipmap/back" />
+
+        <Button
+            android:id="@+id/btn_complete"
+            android:layout_width="@dimen/dp_55"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginEnd="10dp"
+            android:text="完成"
+            android:textColor="@color/color_8C8C8C"
+            android:background="@drawable/btn_bg_gry"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/white"
+        >
+
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"
+            android:gravity="center_vertical"
+            android:background="@null"
+            android:paddingStart="@dimen/dp_10"
+            tools:layout_editor_absoluteX="53dp"
+            tools:layout_editor_absoluteY="19dp" />
+
+        <ImageView
+            android:id="@+id/img_delete"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edit_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/delet" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

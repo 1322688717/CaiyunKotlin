@@ -4,17 +4,27 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/bg_btn_transparent.xml" value="0.2545" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/bg_gry.xml" value="0.2395" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/bg_rounded.xml" value="0.2545" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/btn_bg_green.xml" value="0.2405" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/btn_bg_gry.xml" value="0.2405" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/btn_bg_roadi.xml" value="0.2405" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/select.xml" value="0.2395" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/drawable/white.xml" value="0.2395" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.2352744310575636" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout-w936dp/activity_login.xml" value="0.2691256830601093" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_base.xml" value="0.3515625" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_home.xml" value="0.29846014492753625" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_login.xml" value="0.35688405797101447" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_my.xml" value="0.29846014492753625" />
-        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_personal_center.xml" value="0.35507246376811596" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_personal_center.xml" value="0.33" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_set_name.xml" value="0.33" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/activity_wall_paper.xml" value="0.75" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/fragment_home.xml" value="0.3515625" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/fragment_home2.xml" value="0.358695652173913" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/fragment_like2.xml" value="0.358695652173913" />
-        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/fragment_my2.xml" value="0.5" />
+        <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/fragment_my2.xml" value="0.25" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/item_forcast_weather.xml" value="0.358695652173913" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/layout/item_like.xml" value="0.3651041666666667" />
         <entry key="..\:/zcq/project/CaiyunKotlin/app/src/main/res/menu/bottom_menu.xml" value="0.36614583333333334" />

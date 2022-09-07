@@ -11,11 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.example.caiyunkotlin.base.BaseActivity
 import com.example.caiyunkotlin.databinding.ActivityMainBinding
 import com.example.caiyunkotlin.viewmodel.MainViewModel
 import com.example.common_lib.statusbar.StatusBarUtil
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val manager: FragmentManager = supportFragmentManager
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding!!.root)
          val navController : NavController = Navigation.findNavController(this,R.id.fragmentContainerView)
         NavigationUI.setupWithNavController(binding!!.bottomNavigationView,navController)
-        StatusBarUtil.initStatusBar(this)
+
 
     }
 

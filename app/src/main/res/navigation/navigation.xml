@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_like2" />
     <fragment
         android:id="@+id/myFragment"
-        android:name="com.example.caiyunkotlin.fragment.My.MyFragment"
+        android:name="com.example.caiyunkotlin.fragment.my.MyFragment"
         android:label="fragment_my2"
         tools:layout="@layout/fragment_my2" />
 </navigation>
