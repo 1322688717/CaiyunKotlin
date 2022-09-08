@@ -1,9 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".login.LoginActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"/>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="@dimen/dp_35"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginStart="@dimen/dp_20"
+        android:padding="@dimen/dp_10"
+        app:srcCompat="@mipmap/back" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="账号登录" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_50000000"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_20"
+            app:layout_constraintBottom_toTopOf="@+id/edt_password"
+            app:layout_constraintTop_toBottomOf="@+id/edt_account"
+            tools:layout_editor_absoluteX="23dp" />
+
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_20"
+            android:background="@color/color_50000000"
+            app:layout_constraintTop_toBottomOf="@+id/edt_password"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="账号"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edt_account" />
+
+        <EditText
+            android:id="@+id/edt_account"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:paddingStart="@dimen/dp_20"
+            android:hint="填写账号"
+            android:background="@null"
+            android:maxLength="11"
+            android:inputType="text"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="请填写密码"
+            android:inputType="textPassword"
+            android:paddingStart="@dimen/dp_20"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_account"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="密码"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edt_password" />
+
+        <ImageView
+            android:id="@+id/img_delete_account"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_account"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/edt_account"
+            app:srcCompat="@mipmap/delet"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:id="@+id/img_delete_password"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_password"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="@+id/edt_password"
+            app:srcCompat="@mipmap/delet"
+            android:visibility="gone"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/bg_gry"
+            android:text="登录"
+            android:textColor="@color/color_8C8C8C"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+        <ImageView
+            android:id="@+id/img_code"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_ver_code"
+            app:layout_constraintStart_toEndOf="@+id/edt_ver_code"
+            app:layout_constraintTop_toTopOf="@+id/edt_ver_code" />
+
+        <EditText
+            android:id="@+id/edt_ver_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="验证码"
+            android:paddingStart="@dimen/dp_20"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="账号密码都为：admin123"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

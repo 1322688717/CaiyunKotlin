@@ -12,13 +12,15 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-        var mName = sharedPreferences.getString("FirstLogin", "1")
+        var mName = sharedPreferences.getString("FirstLogin", "0")
         var FirstLogin = mName
 
         if (FirstLogin == "1"){
             RouterUtil().goMainActivity(this)
+            finish()
         }else if (FirstLogin == "0"){
             RouterUtil().goLoginActivity(this)
+            finish()
         }
     }
 }
