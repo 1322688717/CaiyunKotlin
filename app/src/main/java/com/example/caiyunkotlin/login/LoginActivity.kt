@@ -37,41 +37,10 @@ class LoginActivity : BaseActivity() {
         initOnclick()
         getCode()  //获取验证码
         initEdit()
-        initBtnLogin()
-    }
-
-    /**
-     * 初始胡登录按钮
-     */
-    @SuppressLint("ResourceAsColor")
-    private fun initBtnLogin() {
-
-
-
-//        viewModel.setIsClick(account,passWord,code)
-//        viewModel.getIsClick().observe(this){
-//            if (it){
-//                binding.btnLogin.isClickable = true
-//                binding.btnLogin.setBackgroundResource(R.drawable.btn_bg_green)
-//                binding.btnLogin.setTextColor(R.color.white)
-//            }else{
-//                binding.btnLogin.isClickable = false
-//                binding.btnLogin.setBackgroundResource(R.drawable.btn_bg_gry)
-//                binding.btnLogin.setTextColor(R.color.color_8C8C8C)
-//            }
-//        }
-
-//        if (viewModel.isPassword(binding.edtPassword.text.toString())&&viewModel.isUserName(binding.edtAccount.text.toString())&&viewModel.isCode(binding.edtVerCode.text.toString())){
-//            binding.btnLogin.isClickable = true
-//            binding.btnLogin.setBackgroundResource(R.drawable.btn_bg_green)
-//            binding.btnLogin.setTextColor(R.color.white)
-//        }else{
-//            binding.btnLogin.isClickable = false
-//            binding.btnLogin.setBackgroundResource(R.drawable.btn_bg_gry)
-//            binding.btnLogin.setTextColor(R.color.color_8C8C8C)
-//        }
 
     }
+
+
 
     /**
      * //监听账号密码
@@ -179,6 +148,11 @@ class LoginActivity : BaseActivity() {
 
             imgDeletePassword.setOnClickListener {
                 binding.edtPassword.setText("")
+            }
+
+            imgCode.setOnClickListener {
+                viewModel.getCode()
+
             }
         }
     }

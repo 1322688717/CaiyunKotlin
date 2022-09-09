@@ -35,10 +35,12 @@ class LoginViewModel : ViewModel() {
                 Log.e("TAG","response====${response}")
                 Log.e("TAG","token==${response.body()!!.token}")
 
-
+                RouterUtil().goMainActivity(activity)
+                activity.finish()
                 if (response.body()!!.code==200){
-                    RouterUtil().goMainActivity(activity)
-                    activity.finish()
+                    Toast.makeText(activity,"登录成功",Toast.LENGTH_SHORT).show()
+                }else if(response.body()!!.code==500){
+                    Toast.makeText(activity,"验证码错误",Toast.LENGTH_SHORT).show()
                 }else{
                     Toast.makeText(activity,"用户名或密码错误",Toast.LENGTH_SHORT).show()
                 }
