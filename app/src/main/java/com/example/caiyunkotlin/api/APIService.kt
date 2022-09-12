@@ -1,12 +1,8 @@
 package com.example.caiyunkotlin.api
 
-import com.example.caiyunkotlin.bean.BeanForecastWeather
-import com.example.caiyunkotlin.bean.BeanNowWeather
-import com.example.caiyunkotlin.bean.ErathyBean
-import com.example.caiyunkotlin.bean.SaoBean
+import com.example.caiyunkotlin.bean.*
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface APIService {
     @GET("/api/sao")
@@ -23,4 +19,11 @@ interface APIService {
 
     @GET("/v3/life/suggestion.json?key=SRSE70OFAul-Ppk2W")
     fun getLifeIndex(@Query("location") location : String ) : Call<BeanForecastWeather>
+
+    @GET("/prod-api/captchaImage")
+    fun getCode() : Call<BeanCode>
+
+    @FormUrlEncoded()
+    @POST("/prod-api/login")
+    fun getLogin(@Field("code") code : String, @Field("password") password : String, @Field("username") username : String, @Field("uuid") uuid : String  ) : Call<BeanLogin>
 }
