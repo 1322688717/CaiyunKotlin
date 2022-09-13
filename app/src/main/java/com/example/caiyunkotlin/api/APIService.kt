@@ -1,8 +1,10 @@
 package com.example.caiyunkotlin.api
 
 import com.example.caiyunkotlin.bean.*
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+
 
 interface APIService {
     @GET("/api/sao")
@@ -23,7 +25,16 @@ interface APIService {
     @GET("/prod-api/captchaImage")
     fun getCode() : Call<BeanCode>
 
-    @FormUrlEncoded()
-    @POST("/prod-api/login")
-    fun getLogin(@Field("code") code : String, @Field("password") password : String, @Field("username") username : String, @Field("uuid") uuid : String  ) : Call<BeanLogin>
+    /**
+     * 这里是以表单形式post请求
+     */
+//    @FormUrlEncoded()
+//    @POST("/prod-api/login")
+//    fun getLogin(@Field("code") code : String, @Field("password") password : String, @Field("username") username : String, @Field("uuid") uuid : String  ) : Call<BeanLogin>
+
+    /**
+     * 这里是以json形式请求
+     */
+    @POST("/user/updateUserInfo")
+    fun getLogin(@Body body: BeanGologin): Call<BeanLogin>
 }

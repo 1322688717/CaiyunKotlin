@@ -90,4 +90,7 @@ dependencies {
 // alternatively, just LiveData
     implementation "android.arch.lifecycle:livedata:1.1.0"
 
+    //retrofit
+    api('com.squareup.retrofit2:retrofit:2.9.0')
+    api('com.squareup.retrofit2:converter-gson:2.9.0')
 }

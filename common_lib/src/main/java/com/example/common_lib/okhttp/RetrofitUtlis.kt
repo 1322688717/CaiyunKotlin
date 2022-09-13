@@ -1,6 +1,5 @@
 package com.example.common_lib.okhttp
 
-import android.widget.Switch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

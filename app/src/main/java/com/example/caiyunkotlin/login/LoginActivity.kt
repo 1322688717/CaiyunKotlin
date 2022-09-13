@@ -139,7 +139,7 @@ class LoginActivity : BaseActivity() {
                 Log.e("TAG","password====${passWord}")
                 Log.e("TAG","code====${code}")
                 Log.e("TAG","uuid====${uuid}")
-                viewModel.login(account!!,passWord!!,this@LoginActivity,code!!,uuid!!)
+                viewModel.login(account, passWord,this@LoginActivity, code, uuid)
             }
 
             imgDeleteAccount.setOnClickListener {

@@ -8,13 +8,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.caiyunkotlin.api.RequestResponse
 import com.example.caiyunkotlin.bean.BeanCode
+import com.example.caiyunkotlin.bean.BeanGologin
 import com.example.caiyunkotlin.bean.BeanLogin
 import com.example.caiyunkotlin.bean.UserInfoBean
 import com.example.caiyunkotlin.utlis.RouterUtil
+import com.google.gson.Gson
+import okhttp3.FormBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class LoginViewModel : ViewModel() {
 
@@ -23,6 +25,8 @@ class LoginViewModel : ViewModel() {
     var VerCode = MutableLiveData<String>()      //验证码
     var uuid = MutableLiveData<String>()
     var isclick = MutableLiveData<Boolean>()
+    var beanGologin = BeanGologin()
+
 
 
     /**
@@ -30,28 +34,64 @@ class LoginViewModel : ViewModel() {
      */
     fun login(account : String , password : String,activity: Activity,code: String,uuid: String){
 
-        RequestResponse.huaoService.getLogin(code,password,account,uuid).enqueue(object : Callback<BeanLogin>{
-            override fun onResponse(call: Call<BeanLogin>, response: Response<BeanLogin>) {
+//        RequestResponse.huaoService.getLogin(code,password,account,uuid).enqueue(object : Callback<BeanLogin>{
+//            override fun onResponse(call: Call<BeanLogin>, response: Response<BeanLogin>) {
+//                Log.e("TAG","response====${response}")
+//                Log.e("TAG","token==${response.body()!!.token}")
+//
+//                RouterUtil().goMainActivity(activity)
+//                activity.finish()
+//                if (response.body()!!.code==200){
+//                    Toast.makeText(activity,"登录成功",Toast.LENGTH_SHORT).show()
+//                }else if(response.body()!!.code==500){
+//                    Toast.makeText(activity,"验证码错误",Toast.LENGTH_SHORT).show()
+//                }else{
+//                    Toast.makeText(activity,"用户名或密码错误",Toast.LENGTH_SHORT).show()
+//                }
+//
+//            }
+//
+//            override fun onFailure(call: Call<BeanLogin>, t: Throwable) {
+//                Toast.makeText(activity,"无法连接互联网",Toast.LENGTH_SHORT).show()
+//            }
+//        })
+
+
+
+
+        beanGologin.code = code.toInt()
+        beanGologin.uuid = uuid
+        beanGologin.username = account
+        beanGologin.password = password
+
+        RequestResponse.huaoService.getLogin(beanGologin).enqueue(object : Callback<BeanLogin?>{
+            override fun onResponse(call: Call<BeanLogin?>, response: Response<BeanLogin?>) {
+
                 Log.e("TAG","response====${response}")
-                Log.e("TAG","token==${response.body()!!.token}")
-
-                RouterUtil().goMainActivity(activity)
-                activity.finish()
-                if (response.body()!!.code==200){
-                    Toast.makeText(activity,"登录成功",Toast.LENGTH_SHORT).show()
-                }else if(response.body()!!.code==500){
-                    Toast.makeText(activity,"验证码错误",Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(activity,"用户名或密码错误",Toast.LENGTH_SHORT).show()
+                Log.e("TAG","token==${response.body()?.token}")
+                when (response.body()!!.code) {
+                    200 -> {
+                        RouterUtil().goMainActivity(activity)
+                        activity.finish()
+                        Toast.makeText(activity,"登录成功",Toast.LENGTH_SHORT).show()
+                    }
+                    500 -> {
+                        Toast.makeText(activity,"验证码错误",Toast.LENGTH_SHORT).show()
+                    }
+                    405 ->{
+                        Toast.makeText(activity,"请求方式错误",Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        Toast.makeText(activity,"用户名或密码错误",Toast.LENGTH_SHORT).show()
+                    }
                 }
-
             }
 
-            override fun onFailure(call: Call<BeanLogin>, t: Throwable) {
-                Toast.makeText(activity,"无法连接互联网",Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<BeanLogin?>, t: Throwable) {
+                Toast.makeText(activity,t.toString(),Toast.LENGTH_SHORT).show()
             }
+
         })
-
     }
 
 
