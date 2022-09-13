@@ -35,6 +35,6 @@ interface APIService {
     /**
      * 这里是以json形式请求
      */
-    @POST("/user/updateUserInfo")
+    @POST("/prod-api/login")
     fun getLogin(@Body body: BeanGologin): Call<BeanLogin>
 }

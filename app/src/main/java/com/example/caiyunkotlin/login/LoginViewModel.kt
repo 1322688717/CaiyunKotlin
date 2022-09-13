@@ -12,8 +12,9 @@ import com.example.caiyunkotlin.bean.BeanGologin
 import com.example.caiyunkotlin.bean.BeanLogin
 import com.example.caiyunkotlin.bean.UserInfoBean
 import com.example.caiyunkotlin.utlis.RouterUtil
-import com.google.gson.Gson
-import okhttp3.FormBody
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
