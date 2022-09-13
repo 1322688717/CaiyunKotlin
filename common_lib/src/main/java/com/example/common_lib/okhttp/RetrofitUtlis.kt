@@ -11,10 +11,7 @@ object RetrofitUtlis {
             .baseUrl(getUrl(type))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-
     }
-
 
     /**
      * 调用create方法，传入service接口对应的Class类型，创建一个该接口的动态代理对象
@@ -28,7 +25,7 @@ object RetrofitUtlis {
             1 -> Base_URL = "https://api.vvhan.com"  //韩小韩API接口站
             2 -> Base_URL = "https://api.uomg.com"  //UomgAPI 接口网站
             3 -> Base_URL = "https://api.seniverse.com/"  //心知天气
-            4 -> Base_URL = "http://121.5.233.252"
+            4 -> Base_URL = "http://121.5.233.252"  //胡总服务器
         }
         return Base_URL
     }

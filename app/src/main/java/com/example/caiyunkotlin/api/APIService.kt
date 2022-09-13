@@ -37,4 +37,7 @@ interface APIService {
      */
     @POST("/prod-api/login")
     fun getLogin(@Body body: BeanGologin): Call<BeanLogin>
+
+    @GET("/prod-api/system/user/profile")
+    fun getUserInfo(@Query("Authorization") Authorization : String) : Call<SaoBean>
 }

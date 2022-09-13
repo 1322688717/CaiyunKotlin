@@ -34,32 +34,6 @@ class LoginViewModel : ViewModel() {
      * 登录
      */
     fun login(account : String , password : String,activity: Activity,code: String,uuid: String){
-
-//        RequestResponse.huaoService.getLogin(code,password,account,uuid).enqueue(object : Callback<BeanLogin>{
-//            override fun onResponse(call: Call<BeanLogin>, response: Response<BeanLogin>) {
-//                Log.e("TAG","response====${response}")
-//                Log.e("TAG","token==${response.body()!!.token}")
-//
-//                RouterUtil().goMainActivity(activity)
-//                activity.finish()
-//                if (response.body()!!.code==200){
-//                    Toast.makeText(activity,"登录成功",Toast.LENGTH_SHORT).show()
-//                }else if(response.body()!!.code==500){
-//                    Toast.makeText(activity,"验证码错误",Toast.LENGTH_SHORT).show()
-//                }else{
-//                    Toast.makeText(activity,"用户名或密码错误",Toast.LENGTH_SHORT).show()
-//                }
-//
-//            }
-//
-//            override fun onFailure(call: Call<BeanLogin>, t: Throwable) {
-//                Toast.makeText(activity,"无法连接互联网",Toast.LENGTH_SHORT).show()
-//            }
-//        })
-
-
-
-
         beanGologin.code = code.toInt()
         beanGologin.uuid = uuid
         beanGologin.username = account
@@ -67,9 +41,6 @@ class LoginViewModel : ViewModel() {
 
         RequestResponse.huaoService.getLogin(beanGologin).enqueue(object : Callback<BeanLogin?>{
             override fun onResponse(call: Call<BeanLogin?>, response: Response<BeanLogin?>) {
-
-                Log.e("TAG","response====${response}")
-                Log.e("TAG","token==${response.body()?.token}")
                 when (response.body()!!.code) {
                     200 -> {
                         RouterUtil().goMainActivity(activity)
