@@ -12,27 +12,32 @@ class RouterUtil {
 
 
     fun goPersonalCenterActivity(mContext: Context){
-        var intent  = Intent(mContext, PersonalCenterActivity::class.java)
+        val intent  = Intent(mContext, PersonalCenterActivity::class.java)
         mContext.startActivity(intent)
     }
 
     fun goWallPaperActivity(mContext: Context){
-        var intent  = Intent(mContext, WallPaperActivity::class.java)
+        val intent  = Intent(mContext, WallPaperActivity::class.java)
         mContext.startActivity(intent)
     }
 
     fun goSetNameActivity(mContext: Context){
-        var intent  = Intent(mContext, SetNameActivity::class.java)
+        val intent  = Intent(mContext, SetNameActivity::class.java)
         mContext.startActivity(intent)
     }
 
+    fun goMainActivity(mContext: Context,token : String){
+        val intent  = Intent(mContext, MainActivity::class.java)
+        intent.putExtra("token",token)
+        mContext.startActivity(intent)
+    }
     fun goMainActivity(mContext: Context){
-        var intent  = Intent(mContext, MainActivity::class.java)
+        val intent  = Intent(mContext, MainActivity::class.java)
         mContext.startActivity(intent)
     }
 
     fun goLoginActivity(mContext: Context){
-        var intent  = Intent(mContext, LoginActivity::class.java)
+        val intent  = Intent(mContext, LoginActivity::class.java)
         mContext.startActivity(intent)
     }
 

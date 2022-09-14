@@ -40,21 +40,6 @@ class LikeViewModel : ViewModel() {
                     activity.runOnUiThread {
                         likeBean.value = json
                     }
-
-                    //这里是直接拿json对象一层一层拿自己想要的
-//                val res : JSONObject? = jsonobj.optJSONObject("res")
-//                val vertical : JSONArray? = res?.optJSONArray("vertical")
-//                val itemObj : JSONObject = vertical!!.optJSONObject(0)
-//                val img : String = itemObj.optString("img")
-//                Log.e("tag","img==$img")
-//                activity!!.runOnUiThread {
-//                    binding!!.rcWallpaper.layoutManager = GridLayoutManager(activity,2)
-//                    adapter = AdapterLike(json.res.vertical,activity!!)
-//                    binding!!.rcWallpaper.adapter = adapter
-
-
-
-
                 }
             })
     }

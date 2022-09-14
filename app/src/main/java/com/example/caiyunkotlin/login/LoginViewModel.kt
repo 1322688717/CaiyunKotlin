@@ -1,6 +1,7 @@
 package com.example.caiyunkotlin.login
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
@@ -44,8 +45,10 @@ class LoginViewModel : ViewModel() {
                 when (response.body()!!.code) {
                     200 -> {
                         RouterUtil().goMainActivity(activity)
-                        activity.finish()
+                        val sp = activity.getSharedPreferences("token", Context.MODE_PRIVATE)
+                        sp.edit().putString("token", response.body()!!.token.toString()).apply()
                         Toast.makeText(activity,"登录成功",Toast.LENGTH_SHORT).show()
+                        activity.finish()
                     }
                     500 -> {
                         Toast.makeText(activity,"验证码错误",Toast.LENGTH_SHORT).show()

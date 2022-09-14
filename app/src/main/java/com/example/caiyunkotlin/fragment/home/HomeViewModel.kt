@@ -23,7 +23,7 @@ class HomeViewModel : ViewModel() {
 
 
     init {
-        erathy.value = "土味情话"
+        erathy.value = ""
     }
 
     fun setSao(){
