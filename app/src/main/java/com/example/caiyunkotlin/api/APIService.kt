@@ -39,5 +39,29 @@ interface APIService {
     fun getLogin(@Body body: BeanGologin): Call<BeanLogin>
 
     @GET("/prod-api/system/user/profile")
-    fun getUserInfo(@Query("Authorization") Authorization : String) : Call<SaoBean>
+    fun getUserInfo() : Call<Userinfo>
 }
+
+//internal interface Api {
+//    /**
+//     * 使用@Body注解作为参数
+//     */
+//    @POST("/user/updateUserInfo")
+//    fun updateUserInfo3(@Body body: RequestBody?): Observable<BaseModel?>?
+//
+//    /**
+//     * 使用@Field注解作为参数
+//     */
+//    @FormUrlEncoded //@Field参数 一定需要这个注解
+//    @POST("/user/updateUserInfo")
+//    fun updateUserInfo1(
+//        @Field("phone") phone: String?,
+//        @Field("isUpdated") isUpdated: String?
+//    ): Observable<BaseModel?>?
+//
+//    /**
+//     * 使用@FieldMap注解作为参数
+//     */
+//    @POST("/user/updateUserInfo")
+//    fun updateUserInfo2(@FieldMap param: Map<*, *>?): Observable<BaseModel?>?
+//}

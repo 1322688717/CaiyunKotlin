@@ -10,4 +10,5 @@ data class UserInfoBean(
     var location : String,
     var indexSign : String,
     var headPicture : String,
+
     )

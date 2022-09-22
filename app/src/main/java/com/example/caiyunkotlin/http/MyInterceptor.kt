@@ -1,0 +1,61 @@
+package com.example.caiyunkotlin.http
+
+import android.util.Log
+import okhttp3.*
+import okio.IOException
+import java.nio.Buffer
+import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets.UTF_8
+
+class MyInterceptor : Interceptor {
+
+    val TAG = "MyInterceptor"
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+        var request : Request = chain.request()
+        var startTime = System.currentTimeMillis()
+        var response : Response =  chain.proceed(chain.request())
+        var endTime = System.currentTimeMillis()
+        var duration = endTime-startTime
+        var mediaType : MediaType = response.body!!.contentType()!!
+        var content =  response.body.toString()
+        Log.e(TAG,request.toString())
+        printParams(request.body!!)
+        Log.e(TAG, "请求体返回：| Response:" + content);
+        Log.e(TAG, "----------请求耗时:" + duration + "毫秒----------");
+        return response.newBuilder().body(okhttp3.ResponseBody.create(mediaType, content)).build();
+    }
+
+    private fun printParams(body: RequestBody) {
+       var buffer : okio.Buffer = okio.Buffer()
+       try {
+           body.writeTo(buffer)
+           var charset : Charset = Charset.forName("UTF-8")
+           var contentType : MediaType? = body.contentType()
+           if (contentType!=null){
+               charset = contentType.charset(UTF_8!!)!!
+           }
+           var params = buffer.readString(charset)
+           Log.e(TAG, "请求参数： | " + params);
+       }catch ( e : IOException){
+           e.printStackTrace()
+       }
+    }
+}
+
+
+//    private void printParams(RequestBody body) {
+//        Buffer buffer = new Buffer();
+//        try {
+//            body.writeTo(buffer);
+//            Charset charset = Charset.forName("UTF-8");
+//            MediaType contentType = body.contentType();
+//            if (contentType != null) {
+//                charset = contentType.charset(UTF_8);
+//            }
+//            String params = buffer.readString(charset);
+//            Log.e(TAG, "请求参数： | " + params);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//

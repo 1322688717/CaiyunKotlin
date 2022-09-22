@@ -19,4 +19,9 @@
         android:name="com.example.caiyunkotlin.fragment.my.MyFragment"
         android:label="fragment_my2"
         tools:layout="@layout/fragment_my2" />
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.caiyunkotlin.fragment.shop.ShopFragment"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" />
 </navigation>

@@ -1,16 +1,18 @@
 package com.example.caiyunkotlin.bean;
 
-public class BeanGologin {
-    private Integer code;
+import java.io.Serializable;
+
+public class BeanGologin implements Serializable {
+    private String code;
     private String password;
     private String username;
     private String uuid;
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

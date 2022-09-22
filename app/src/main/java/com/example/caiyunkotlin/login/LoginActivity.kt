@@ -18,6 +18,7 @@ import com.example.caiyunkotlin.base.BaseActivity
 import com.example.caiyunkotlin.databinding.ActivityLoginBinding
 import com.example.caiyunkotlin.utlis.UtliBase64
 import kotlinx.android.synthetic.main.activity_login.*
+import java.nio.Buffer
 
 class LoginActivity : BaseActivity() {
 
@@ -28,6 +29,7 @@ class LoginActivity : BaseActivity() {
     var code : String = ""
     var uuid : String = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -37,6 +39,8 @@ class LoginActivity : BaseActivity() {
         initOnclick()
         getCode()  //获取验证码
         initEdit()
+
+
 
     }
 

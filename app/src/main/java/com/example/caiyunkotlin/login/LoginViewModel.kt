@@ -13,6 +13,7 @@ import com.example.caiyunkotlin.bean.BeanGologin
 import com.example.caiyunkotlin.bean.BeanLogin
 import com.example.caiyunkotlin.bean.UserInfoBean
 import com.example.caiyunkotlin.utlis.RouterUtil
+import com.google.gson.Gson
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import org.json.JSONObject
@@ -35,29 +36,33 @@ class LoginViewModel : ViewModel() {
      * 登录
      */
     fun login(account : String , password : String,activity: Activity,code: String,uuid: String){
-        beanGologin.code = code.toInt()
+        beanGologin.code = code
         beanGologin.uuid = uuid
         beanGologin.username = account
         beanGologin.password = password
 
         RequestResponse.huaoService.getLogin(beanGologin).enqueue(object : Callback<BeanLogin?>{
             override fun onResponse(call: Call<BeanLogin?>, response: Response<BeanLogin?>) {
+                Log.e("TAG","response=====${response.body()!!.token}")
+                Log.e("TAG","response.body()!!.code=====${response.body()!!.code}")
+                Log.e("TAG","response.body()!!.msg=====${response.body()!!.msg}")
                 when (response.body()!!.code) {
                     200 -> {
                         RouterUtil().goMainActivity(activity)
-                        val sp = activity.getSharedPreferences("token", Context.MODE_PRIVATE)
+                        val sp = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
                         sp.edit().putString("token", response.body()!!.token.toString()).apply()
                         Toast.makeText(activity,"登录成功",Toast.LENGTH_SHORT).show()
-                        activity.finish()
+                        Log.e("TAG","存token${response.body()!!.token}")
+                                activity.finish()
                     }
                     500 -> {
-                        Toast.makeText(activity,"验证码错误",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, response.body()!!.msg,Toast.LENGTH_SHORT).show()
                     }
                     405 ->{
-                        Toast.makeText(activity,"请求方式错误",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity,response.body()!!.msg,Toast.LENGTH_SHORT).show()
                     }
                     else -> {
-                        Toast.makeText(activity,"用户名或密码错误",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity,response.body()!!.msg,Toast.LENGTH_SHORT).show()
                     }
                 }
             }

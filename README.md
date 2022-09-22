@@ -23,7 +23,11 @@ kotlin  彩云天气
 
 * 验证码
   * http://121.5.233.252/prod-api/captchaImage
+  * 请求方式： get
 * 登录
   * http://121.5.233.252/prod-api/login
+  * 请求方式 post
+  * 请求体 ：{"code":"40","password":"admin123","username":"admin123","uuid":"7dfa8663a8ac4e4e8eaca4bb9bfb881f"}
+  * 返回格式：
 * 获取用户信息
   * http://121.5.233.252/prod-api/system/user/profile
