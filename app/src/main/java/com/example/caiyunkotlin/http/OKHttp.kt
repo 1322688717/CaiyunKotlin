@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.example.common_lib.okhttp.IGetDataListener
 import okhttp3.*
+import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody.Companion.toResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
@@ -54,7 +55,7 @@ class OKHttp {
         Log.e("TAG","拿token===$token")
         request = Request.Builder()
             //.url("http://121.5.233.252/prod-api/system/user/profile")
-            .url("  https://www.gjzy352.top/prod-api/system/user/profile")
+            .url("https://www.gjzy352.top/prod-api/system/user/profile")
                 .addHeader(
                 "Authorization",
                 "Bearer $token"
@@ -62,7 +63,18 @@ class OKHttp {
             .get()
             .build()
         val httpLoggingInterceptor : HttpLoggingInterceptor = HttpLoggingInterceptor {
-            Log.e("拦截器",it )
+
+//            var i = 0
+//            when (i){
+//                10 ->   Log.e("拦截器", it)
+//            }
+//            i++
+
+
+            //public boolean startsWith(String prefix)
+            //Log.e("拦截器", it.substring(it.indexOf("{"),it.indexOf("}")))
+            Log.e("拦截器", it.toResponseBody().string())
+
             
            // Log.e("拦截器it.toResponseBody()====",it.toResponseBody().string())
         }
