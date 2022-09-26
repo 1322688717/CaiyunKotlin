@@ -145,8 +145,8 @@ class LoginActivity : BaseActivity() {
                 Log.e("TAG","code====${code}")
                 Log.e("TAG","uuid====${uuid}")
                 viewModel.login(account, passWord,this@LoginActivity, code, uuid)
-                RouterUtil().goMainActivity(this@LoginActivity)
-                this@LoginActivity.finish()
+//                RouterUtil().goMainActivity(this@LoginActivity)
+//                this@LoginActivity.finish()
             }
 
             imgDeleteAccount.setOnClickListener {
