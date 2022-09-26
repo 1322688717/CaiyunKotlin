@@ -36,16 +36,20 @@ class AdapterForcastWeather(var beanForecastWeather: BeanForecastWeather) : Recy
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: AdapterForcastWeather.MyViewHolder, position: Int) {
-        holder.tv_weather!!.text = beanForecastWeather.results[0].daily.get(position).text_day
+        holder.tv_weather!!.text = beanForecastWeather.results[0].daily[position].text_day
 
-        holder.tv_temp_top!!.text = "${beanForecastWeather.results[0].daily.get(position).high}/"
-        holder.tv_temp_bottom!!.text = beanForecastWeather.results[0].daily.get(position).low
-        if (position == 0){
-            holder.tv_date!!.text = beanForecastWeather.results[0].daily.get(position).date.substring(5)+"今天"
-        }else if (position == 1){
-            holder.tv_date!!.text = beanForecastWeather.results[0].daily.get(position).date.substring(5)+"明天"
-        }else{
-            holder.tv_date!!.text = beanForecastWeather.results[0].daily.get(position).date.substring(5)+"后天"
+        holder.tv_temp_top!!.text = "${beanForecastWeather.results[0].daily[position].high}/"
+        holder.tv_temp_bottom!!.text = beanForecastWeather.results[0].daily[position].low
+        when (position) {
+            0 -> {
+                holder.tv_date!!.text = beanForecastWeather.results[0].daily[position].date.substring(5)+"今天"
+            }
+            1 -> {
+                holder.tv_date!!.text = beanForecastWeather.results[0].daily[position].date.substring(5)+"明天"
+            }
+            else -> {
+                holder.tv_date!!.text = beanForecastWeather.results[0].daily[position].date.substring(5)+"后天"
+            }
         }
 
     }
