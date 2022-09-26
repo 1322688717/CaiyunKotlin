@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.caiyunkotlin.R
 import com.example.caiyunkotlin.base.BaseActivity
 import com.example.caiyunkotlin.databinding.ActivityLoginBinding
+import com.example.caiyunkotlin.utlis.RouterUtil
 import com.example.caiyunkotlin.utlis.UtliBase64
 import kotlinx.android.synthetic.main.activity_login.*
 import java.nio.Buffer
@@ -144,6 +145,8 @@ class LoginActivity : BaseActivity() {
                 Log.e("TAG","code====${code}")
                 Log.e("TAG","uuid====${uuid}")
                 viewModel.login(account, passWord,this@LoginActivity, code, uuid)
+                RouterUtil().goMainActivity(this@LoginActivity)
+                this@LoginActivity.finish()
             }
 
             imgDeleteAccount.setOnClickListener {

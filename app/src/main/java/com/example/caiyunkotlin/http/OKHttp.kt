@@ -48,7 +48,6 @@ class OKHttp {
 
 
     fun getHead(listener : IGetDataListener<String>,activity : Activity) {
-
         val sharedPreferences: SharedPreferences = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("token", "1")
         Log.e("TAG","拿token===$token")
@@ -60,8 +59,13 @@ class OKHttp {
             )
             .get()
             .build()
+        val httpLoggingInterceptor : HttpLoggingInterceptor = HttpLoggingInterceptor {
+            Log.e("拦截器",it )
+        }
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            //.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(httpLoggingInterceptor)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
