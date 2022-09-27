@@ -34,7 +34,7 @@ class PersonalCenterActivity : BaseActivity() {
     }
 
     private fun initView() {
-        viewModel.getUserName(this)
+        viewModel.getUserName()
 
         viewModel.userName.observe(this){
             binding.tvUserName.text = it

@@ -22,7 +22,7 @@ interface APIService {
     @GET("/v3/life/suggestion.json?key=SRSE70OFAul-Ppk2W")
     fun getLifeIndex(@Query("location") location : String ) : Call<BeanForecastWeather>
 
-    @GET("/prod-api/captchaImage")
+    @GET("captchaImage")
     fun getCode() : Call<BeanCode>
 
     /**
@@ -35,10 +35,11 @@ interface APIService {
     /**
      * 这里是以json形式请求
      */
-    @POST("/prod-api/login")
+    @POST("/login")
     fun getLogin(@Body body: BeanGologin): Call<BeanLogin>
 
-    @GET("/prod-api/system/user/profile")
+    @Headers("Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjIyYjQwOWYyLTkzOGQtNDg5Yi04ZTYyLWMxMDJiMDlkYWViNCJ9.0xj2RUg9-7cDKTmYUeSbbZxTvBmYDrGZeccj9GEbNzs9ALoG1_KlAdjURciT6Q3GscyIVS8f1F0j6NVgVwnHQQ")
+    @GET("/system/user/profile")
     fun getUserInfo() : Call<Userinfo>
 }
 

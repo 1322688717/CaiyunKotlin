@@ -66,13 +66,13 @@
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_10"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_16"
-            android:gravity="center_vertical"
-            android:background="@null"
-            android:paddingStart="@dimen/dp_10"
-            tools:layout_editor_absoluteX="53dp"
-            tools:layout_editor_absoluteY="19dp" />
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <ImageView
             android:id="@+id/img_delete"

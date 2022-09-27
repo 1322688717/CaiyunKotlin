@@ -55,7 +55,7 @@ class OKHttp {
         Log.e("TAG","拿token===$token")
         request = Request.Builder()
             //.url("http://121.5.233.252/prod-api/system/user/profile")
-            .url("https://www.gjzy352.top/prod-api/system/user/profile")
+            .url("http://47.98.113.125:8082/system/user/profile")
                 .addHeader(
                 "Authorization",
                 "Bearer $token"
@@ -73,7 +73,7 @@ class OKHttp {
 
             //public boolean startsWith(String prefix)
             //Log.e("拦截器", it.substring(it.indexOf("{"),it.indexOf("}")))
-            Log.e("拦截器", it.toResponseBody().string())
+            Log.e("拦截器", it)
 
             
            // Log.e("拦截器it.toResponseBody()====",it.toResponseBody().string())

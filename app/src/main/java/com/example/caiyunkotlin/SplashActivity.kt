@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import com.example.caiyunkotlin.api.RequestResponse
 import com.example.caiyunkotlin.base.BaseActivity
 import com.example.caiyunkotlin.bean.Userinfo
 import com.example.caiyunkotlin.utlis.RouterUtil
@@ -11,6 +12,9 @@ import com.example.common_lib.okhttp.IGetDataListener
 import com.example.caiyunkotlin.http.OKHttp
 import com.google.gson.Gson
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class SplashActivity : BaseActivity() {
@@ -29,13 +33,7 @@ class SplashActivity : BaseActivity() {
 //                Log.e("TAG","nickname===${response.body()!!.msg}")
 //                Log.e("TAG","nickname===${response.body()!!.data}")
 //
-//                if (response.body()!!.code == 200){
-//                    RouterUtil().goMainActivity(this@SplashActivity)
-//                    finish() //关闭当前活动
-//                }else{
-//                    RouterUtil().goLoginActivity(this@SplashActivity)
-//                    finish()
-//                }
+
 //            }
 //
 //            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
@@ -43,23 +41,41 @@ class SplashActivity : BaseActivity() {
 //                finish()
 //            }
 //        })
-
-        OKHttp().getHead(object : IGetDataListener<String>{
-            override fun onFailure(reasonOBJ: Any) {
-                RouterUtil().goLoginActivity(this@SplashActivity)
-                finish()
+        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo>{
+            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
+                Log.e("TAG","nickname===${response.body()!!.data.nickName}")
+                Log.e("TAG","nickname===${response.body()!!.data.admin}")
+                Log.e("TAG","nickname===${response.body()!!.data.sex}")
+                if (response.body()!!.code == 200){
+                    RouterUtil().goMainActivity(this@SplashActivity)
+                    finish() //关闭当前活动
+                }else{
+                    RouterUtil().goLoginActivity(this@SplashActivity)
+                    finish()
+                }
             }
 
-            override fun onSuccess(dataobj: String) {
-//                Log.e("TAG", "dataobj===$dataobj")
-//                var userinfo : Userinfo = Gson().fromJson(dataobj,Userinfo::class.java)
-//                Log.e("TAG", "userinfo.postGroup===${userinfo}")
-//                RouterUtil().goMainActivity(this@SplashActivity)
-//                    finish() //关闭当前活动
-                RouterUtil().goLoginActivity(this@SplashActivity)
-                finish()
-
+            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
+                RouterUtil().goMainActivity(this@SplashActivity)
+                finish() //关闭当前活动
+                Log.e("TAG","t===$t")
             }
-        },this)
+        })
+
+
+
+
+//        OKHttp().getHead(object : IGetDataListener<String>{
+//            override fun onFailure(reasonOBJ: Any) {
+//                RouterUtil().goLoginActivity(this@SplashActivity)
+//                finish()
+//            }
+//
+//            override fun onSuccess(dataobj: String) {
+//                RouterUtil().goLoginActivity(this@SplashActivity)
+//                finish()
+//
+//            }
+//        },this)
     }
 }

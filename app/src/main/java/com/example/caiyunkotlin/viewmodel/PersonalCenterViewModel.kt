@@ -5,6 +5,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.caiyunkotlin.api.RequestResponse
+import com.example.caiyunkotlin.bean.Userinfo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PersonalCenterViewModel : ViewModel() {
     var userName = MutableLiveData<String>()
@@ -19,11 +24,38 @@ class PersonalCenterViewModel : ViewModel() {
         persionSignature.value = "这个人很懒什么都没留下..."
     }
 
-    fun getUserName(activity : Activity){
-        val sharedPreferences: SharedPreferences = activity.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-        var mName = sharedPreferences.getString("name", "中国青年")
-        userName.value = mName!!
+    /**
+     * h获取用户名
+     */
+    fun getUserName(){
+        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo>{
+            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
+                userName.value =  response.body()!!.data.nickName
+            }
+
+            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
+
+    fun getSex(){
+        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo>{
+            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
+                if (response.body()!!.data.sex== "1"){
+                    sex.value = "男"
+                }else{
+                    sex.value = "女"
+                }
+
+            }
+
+            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
 
     fun setSex(){
 

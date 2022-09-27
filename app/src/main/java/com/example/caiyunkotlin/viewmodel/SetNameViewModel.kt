@@ -5,6 +5,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.caiyunkotlin.api.RequestResponse
+import com.example.caiyunkotlin.bean.Userinfo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SetNameViewModel : ViewModel() {
 
@@ -17,9 +22,15 @@ class SetNameViewModel : ViewModel() {
 
     fun getName(activity : Activity){
 
-        val sharedPreferences: SharedPreferences = activity.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-        var mName = sharedPreferences.getString("name", "中国青年")
-        name.value = mName!!
+        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo> {
+            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
+                name.value  =  response.body()!!.data.nickName
+            }
+
+            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     fun setName(activity : Activity,name : String){
