@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.caiyunkotlin.R
 import com.example.caiyunkotlin.databinding.FragmentMy2Binding
 import com.example.caiyunkotlin.utlis.RouterUtil
+import kotlinx.android.synthetic.main.fragment_my2.view.*
 
 class MyFragment : Fragment() {
 
@@ -57,6 +59,16 @@ class MyFragment : Fragment() {
             tvIndSigin.setOnClickListener {
                 RouterUtil().goPersonalCenterActivity(requireContext())
             }
+
+            clExitLogin.setOnClickListener {
+                viewModel.logout(requireActivity())
+                viewModel.logoutMsg.observe(viewLifecycleOwner){
+                    RouterUtil().goLoginActivity(requireActivity())
+                    requireActivity().finish()
+                    Toast.makeText(requireActivity(),it,Toast.LENGTH_LONG).show()
+                }
+
+            }
         }
     }
 
@@ -64,12 +76,14 @@ class MyFragment : Fragment() {
      * 设置头像
      */
     private fun initHeadPicture() {
-
-        val opt : RequestOptions = RequestOptions().circleCrop()
-        Glide.with(requireActivity())
-            .load(R.mipmap.head_picture)
-            .apply(opt)
-            .into(binding.imgHeadPortrait)
+        viewModel.getAvatar(requireActivity())
+        viewModel.avatar.observe(viewLifecycleOwner){
+            val opt : RequestOptions = RequestOptions().circleCrop()
+            Glide.with(requireActivity())
+                .load("http://47.98.113.125:8082/$it")
+                .apply(opt)
+                .into(binding.imgHeadPortrait)
+        }
     }
 
 }

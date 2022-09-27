@@ -21,8 +21,9 @@ class SetNameViewModel : ViewModel() {
     }
 
     fun getName(activity : Activity){
-
-        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo> {
+       val sharedPreferences: SharedPreferences = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "")
+        RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo> {
             override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
                 name.value  =  response.body()!!.data.nickName
             }

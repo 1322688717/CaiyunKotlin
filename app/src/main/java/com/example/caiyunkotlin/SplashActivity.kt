@@ -21,32 +21,12 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val sharedPreferences: SharedPreferences = getSharedPreferences("token", Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences = getSharedPreferences("sp", Context.MODE_PRIVATE)
         val token = sharedPreferences.getString("token", "")
 
-
-//        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo>{
-//            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
-//                Log.e("TAG","response===$response")
-//                Log.e("TAG","response.body()===${response.body()}")
-//                Log.e("TAG","nickname===${response.body()!!.code}")
-//                Log.e("TAG","nickname===${response.body()!!.msg}")
-//                Log.e("TAG","nickname===${response.body()!!.data}")
-//
-
-//            }
-//
-//            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-//                RouterUtil().goLoginActivity(this@SplashActivity)
-//                finish()
-//            }
-//        })
-        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo>{
+        RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo>{
             override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
-                Log.e("TAG","nickname===${response.body()!!.data.nickName}")
-                Log.e("TAG","nickname===${response.body()!!.data.admin}")
-                Log.e("TAG","nickname===${response.body()!!.data.sex}")
-                if (response.body()!!.code == 200){
+                if (response.body()!!.data != null){
                     RouterUtil().goMainActivity(this@SplashActivity)
                     finish() //关闭当前活动
                 }else{
@@ -61,21 +41,5 @@ class SplashActivity : BaseActivity() {
                 Log.e("TAG","t===$t")
             }
         })
-
-
-
-
-//        OKHttp().getHead(object : IGetDataListener<String>{
-//            override fun onFailure(reasonOBJ: Any) {
-//                RouterUtil().goLoginActivity(this@SplashActivity)
-//                finish()
-//            }
-//
-//            override fun onSuccess(dataobj: String) {
-//                RouterUtil().goLoginActivity(this@SplashActivity)
-//                finish()
-//
-//            }
-//        },this)
     }
 }

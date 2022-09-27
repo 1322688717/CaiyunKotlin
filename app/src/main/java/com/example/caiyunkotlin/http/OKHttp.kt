@@ -94,9 +94,6 @@ class OKHttp {
 
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
-                Log.e(TAG,"response======??${response}")
-                Log.e(TAG,"response======??${response.body}")
-
                 listener.onSuccess(response.toString())
             }
         })

@@ -16,19 +16,22 @@ class PersonalCenterViewModel : ViewModel() {
     var sex = MutableLiveData<String>()
     var location = MutableLiveData<String>()
     var persionSignature = MutableLiveData<String>()
+    var avatar = MutableLiveData<String>()
 
     init {
-        userName.value = "中国青年"
-        sex.value = "男"
-        location.value = "湖北 武汉"
+        userName.value = ""
+        sex.value = ""
+        location.value = " 武汉"
         persionSignature.value = "这个人很懒什么都没留下..."
     }
 
     /**
      * h获取用户名
      */
-    fun getUserName(){
-        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo>{
+    fun getUserName(activity : Activity){
+       val sharedPreferences: SharedPreferences = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "")
+        RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo>{
             override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
                 userName.value =  response.body()!!.data.nickName
             }
@@ -38,9 +41,13 @@ class PersonalCenterViewModel : ViewModel() {
             }
         })
     }
-
-    fun getSex(){
-        RequestResponse.huaoService.getUserInfo().enqueue(object : Callback<Userinfo>{
+    /**
+     * 获取性别
+     */
+    fun getSex(activity : Activity){
+       val sharedPreferences: SharedPreferences = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "")
+        RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo>{
             override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
                 if (response.body()!!.data.sex== "1"){
                     sex.value = "男"
@@ -56,17 +63,55 @@ class PersonalCenterViewModel : ViewModel() {
         })
     }
 
+    /**
+     * 获取地址
+     */
+    fun getLocation(activity : Activity){
+       val sharedPreferences: SharedPreferences = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "")
+        RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo>{
+            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
+                location.value =  response.body()!!.data.nickName
+            }
 
-    fun setSex(){
-
+            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
-    fun setLocation(){
+    /**
+     * 获取个签
+     */
+    fun getPersionSignature(activity : Activity){
+       val sharedPreferences: SharedPreferences = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "")
+        RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo>{
+            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
+                persionSignature.value =  response.body()!!.data.nickName
+            }
 
+            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
-    fun setpersionSignature(){
+    /**
+     * 获取用户头像
+     */
+    fun getAvatar(activity : Activity){
+       val sharedPreferences: SharedPreferences = activity.getSharedPreferences("sp", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("token", "")
+        RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo>{
+            override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
+                avatar.value =  response.body()!!.data.avatar
+            }
 
+            override fun onFailure(call: Call<Userinfo>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
 

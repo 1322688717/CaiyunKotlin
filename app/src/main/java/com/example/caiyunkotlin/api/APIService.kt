@@ -38,9 +38,12 @@ interface APIService {
     @POST("/login")
     fun getLogin(@Body body: BeanGologin): Call<BeanLogin>
 
-    @Headers("Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjIyYjQwOWYyLTkzOGQtNDg5Yi04ZTYyLWMxMDJiMDlkYWViNCJ9.0xj2RUg9-7cDKTmYUeSbbZxTvBmYDrGZeccj9GEbNzs9ALoG1_KlAdjURciT6Q3GscyIVS8f1F0j6NVgVwnHQQ")
     @GET("/system/user/profile")
-    fun getUserInfo() : Call<Userinfo>
+    fun getUserInfo(@Header("Authorization")  token : String) : Call<Userinfo>
+
+    @Headers("Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjIyYjQwOWYyLTkzOGQtNDg5Yi04ZTYyLWMxMDJiMDlkYWViNCJ9.0xj2RUg9-7cDKTmYUeSbbZxTvBmYDrGZeccj9GEbNzs9ALoG1_KlAdjURciT6Q3GscyIVS8f1F0j6NVgVwnHQQ")
+    @GET("/logout")
+    fun logout() : Call<BeanLogout>
 }
 
 //internal interface Api {

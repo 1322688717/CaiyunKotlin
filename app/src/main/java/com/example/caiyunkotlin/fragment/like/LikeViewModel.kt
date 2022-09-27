@@ -32,7 +32,6 @@ class LikeViewModel : ViewModel() {
                 }
 
                 override fun onResponse(call: Call, response: Response) {
-                    Log.d("tag","response===${response}")
                     val jsonobj   = JSONObject(response.body!!.string())
 
                     //这里是利用gson解析

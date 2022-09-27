@@ -43,9 +43,6 @@ class LoginViewModel : ViewModel() {
 
         RequestResponse.huaoService.getLogin(beanGologin).enqueue(object : Callback<BeanLogin?>{
             override fun onResponse(call: Call<BeanLogin?>, response: Response<BeanLogin?>) {
-                Log.e("TAG","response=====${response.body()!!.token}")
-                Log.e("TAG","response.body()!!.code=====${response.body()!!.code}")
-                Log.e("TAG","response.body()!!.msg=====${response.body()!!.msg}")
                 when (response.body()!!.code) {
                     200 -> {
                         RouterUtil().goMainActivity(activity)
@@ -121,7 +118,6 @@ class LoginViewModel : ViewModel() {
     fun getCode(){
         RequestResponse.huaoService.getCode().enqueue(object : Callback<BeanCode>{
             override fun onResponse(call: Call<BeanCode>, response: Response<BeanCode>) {
-                Log.e("TAG","uuid=====${response.body()!!.uuid}")
                 VerCode.value = response.body()!!.img
                 uuid.value = response.body()!!.uuid
             }
