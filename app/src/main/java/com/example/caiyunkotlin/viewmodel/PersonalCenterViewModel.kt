@@ -3,6 +3,7 @@ package com.example.caiyunkotlin.viewmodel
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.caiyunkotlin.api.RequestResponse
@@ -37,7 +38,7 @@ class PersonalCenterViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(activity,t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -58,7 +59,7 @@ class PersonalCenterViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
         })
     }
@@ -75,7 +76,7 @@ class PersonalCenterViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
         })
     }
@@ -92,7 +93,7 @@ class PersonalCenterViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
         })
     }
@@ -109,7 +110,7 @@ class PersonalCenterViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
         })
     }

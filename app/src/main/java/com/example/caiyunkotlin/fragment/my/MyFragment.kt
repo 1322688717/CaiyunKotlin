@@ -1,4 +1,5 @@
 package com.example.caiyunkotlin.fragment.my
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -75,13 +76,17 @@ class MyFragment : Fragment() {
     /**
      * 设置头像
      */
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun initHeadPicture() {
         viewModel.getAvatar(requireActivity())
         viewModel.avatar.observe(viewLifecycleOwner){
+
             val opt : RequestOptions = RequestOptions().circleCrop()
             Glide.with(requireActivity())
                 .load("http://47.98.113.125:8082/$it")
+                .error(R.mipmap.head_picture)
                 .apply(opt)
+                .fallback(requireActivity().getDrawable(R.mipmap.head_picture))
                 .into(binding.imgHeadPortrait)
         }
     }

@@ -3,9 +3,11 @@ package com.example.caiyunkotlin.fragment.my
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.caiyunkotlin.R
 import com.example.caiyunkotlin.api.RequestResponse
 import com.example.caiyunkotlin.bean.BeanLogout
 import com.example.caiyunkotlin.bean.Userinfo
@@ -17,8 +19,8 @@ class MyViewModel : ViewModel() {
     var headPortrait = MutableLiveData<String>()
     var nickname =  MutableLiveData<String>()
     var IndSignature = MutableLiveData<String>()  //个性签名
-    var avatar = MutableLiveData<String>()  //个性签名
-    var logoutMsg = MutableLiveData<String>()  //个性签名
+    var avatar = MutableLiveData<String>()  //头像
+    var logoutMsg = MutableLiveData<String>()  //退出登录toast
 
     init {
         nickname.value = ""
@@ -37,7 +39,7 @@ class MyViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-                TODO("Not yet implemented")
+              Toast.makeText(activity,t.toString(),Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -54,7 +56,7 @@ class MyViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(activity,t.toString(),Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -69,7 +71,7 @@ class MyViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<BeanLogout>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(activity,t.toString(),Toast.LENGTH_LONG).show()
             }
 
         })

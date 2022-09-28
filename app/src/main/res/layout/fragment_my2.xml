@@ -20,7 +20,7 @@
            android:layout_height="@dimen/dp_80"
            android:layout_marginStart="20dp"
            android:scaleType="centerCrop"
-           android:src="@mipmap/head_picture"
+
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent" />
