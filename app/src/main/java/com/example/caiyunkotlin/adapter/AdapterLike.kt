@@ -19,7 +19,8 @@ import com.example.caiyunkotlin.bean.Vertical
 import kotlinx.android.synthetic.main.item_like.view.*
 
 
-class AdapterLike (private var vertical: List<Vertical>,private var activity: FragmentActivity) : RecyclerView.Adapter<AdapterLike.MyViewHolder>() {
+class AdapterLike (private var vertical: List<Vertical>,private var activity: FragmentActivity)
+    : RecyclerView.Adapter<AdapterLike.MyViewHolder>() {
 
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

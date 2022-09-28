@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caiyunkotlin.R
 import com.example.caiyunkotlin.adapter.AdapterClassification
 import com.example.caiyunkotlin.adapter.AdapterLike
+import com.example.caiyunkotlin.adapter.AdapterProduct
 import com.example.caiyunkotlin.databinding.FragmentShopBinding
 
 
@@ -16,20 +19,33 @@ class ShopFragment : Fragment() {
 
     lateinit var binding: FragmentShopBinding
     lateinit var viewmodel : ShopViewModel
+    private var adapterClassification : AdapterClassification? = null
+    private var adapterProduct : AdapterProduct? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shop, container, false)
+        binding = FragmentShopBinding.inflate(layoutInflater)
+        viewmodel = ViewModelProvider(this).get(ShopViewModel::class.java)
+        initView()
+        return binding.root
     }
 
-    init {
+    private fun initView() {
         binding.apply {
-            rcClassification.layoutManager = GridLayoutManager(activity, 2)
-            val adapter  = AdapterClassification()
-            rcClassification.adapter = adapter
+            viewmodel.getClassification()
+            viewmodel.BeanShopClass.observe(viewLifecycleOwner){
+                //rcClassification.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+                rcClassification.layoutManager = GridLayoutManager(activity, 5)
+                 adapterClassification  = AdapterClassification(requireActivity(),it)
+                rcClassification.adapter = adapterClassification
+            }
+
+
+            rcProduct.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
+             adapterProduct  = AdapterProduct()
+            rcProduct.adapter = adapterProduct
         }
     }
 

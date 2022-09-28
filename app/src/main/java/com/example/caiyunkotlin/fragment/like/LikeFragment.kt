@@ -49,7 +49,7 @@ imgurl	string	返回图片地址
 width	string	返回图片宽度
 height	string	返回图片高度
 
-返回示例：
+返回示例：`
 
 {"code":"200","imgurl":"https:\/\/tva4.sinaimg.cn\/large\/9bd9b167gy1g2qkr95hylj21hc0u01kx.jpg","width":"1920","height":"1080"}
  */
