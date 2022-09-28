@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_btn_radio10_white"
     android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/dp_5"
+    android:layout_marginStart="@dimen/dp_2"
+    android:layout_marginEnd="@dimen/dp_2"
     android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_item_Product"
+        android:layout_width="@dimen/dp_250"
+        android:layout_height="@dimen/dp_300"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/head_picture" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="满两件包邮这不是手办"
+        android:textColor="@color/color_font"
+        android:textSize="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/img_item_Product" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="￥99.99"
+        android:textColor="@color/color_fa5e25"
+        android:textSize="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="250人已付款"
+        android:textSize="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

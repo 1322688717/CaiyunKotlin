@@ -13,6 +13,8 @@ import com.example.caiyunkotlin.adapter.AdapterClassification
 import com.example.caiyunkotlin.adapter.AdapterLike
 import com.example.caiyunkotlin.adapter.AdapterProduct
 import com.example.caiyunkotlin.databinding.FragmentShopBinding
+import com.scwang.smart.refresh.footer.BallPulseFooter
+import com.scwang.smart.refresh.header.BezierRadarHeader
 
 
 class ShopFragment : Fragment() {
@@ -34,6 +36,7 @@ class ShopFragment : Fragment() {
 
     private fun initView() {
         binding.apply {
+            //分类列表初始化
             viewmodel.getClassification()
             viewmodel.BeanShopClass.observe(viewLifecycleOwner){
                 //rcClassification.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
@@ -42,10 +45,18 @@ class ShopFragment : Fragment() {
                 rcClassification.adapter = adapterClassification
             }
 
-
-            rcProduct.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
-             adapterProduct  = AdapterProduct()
+            //商品列表初始化
+            rcProduct.layoutManager = GridLayoutManager(activity, 2)
+             adapterProduct  = AdapterProduct(requireActivity())
             rcProduct.adapter = adapterProduct
+
+            //刷新控件初始化
+            srSmartRefreshLayout.setRefreshHeader(BezierRadarHeader(activity).setEnableHorizontalDrag(true))
+            srSmartRefreshLayout.setOnRefreshListener {
+                it.finishRefresh()
+            }
+
+
         }
     }
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.shop.shopFragment"
-    android:background="@color/color_fafafa"
+    android:background="@color/color_efefef"
     android:orientation="vertical"
     >
 
@@ -44,14 +44,16 @@
                     android:id="@+id/editTextTextPersonName"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_35"
+                    android:layout_marginStart="@dimen/dp_10"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="@dimen/dp_10"
-                    android:layout_marginStart="@dimen/dp_10"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="3060矿卡"
-                    android:paddingStart="@dimen/dp_20"
                     android:background="@drawable/bg_radio10"
+                    android:ems="10"
+                    android:hint="3060矿卡"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:inputType="textPersonName"
+                    android:paddingStart="@dimen/dp_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -75,42 +77,49 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/sr_SmartRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/color_efefef"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingRight="@dimen/dp_10"
-            android:paddingTop="@dimen/dp_10"
-            >
-
-            <com.youth.banner.Banner
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/color_efefef"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10"
+                >
 
-                />
+                <com.youth.banner.Banner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rc_Classification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rc_Classification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_btn_radio20_white"
+                    />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rc_Product"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_marginTop="@dimen/dp_10"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rc_Product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_efefef"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_75"
+                    />
 
-        </LinearLayout>
 
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
