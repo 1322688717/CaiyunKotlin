@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.caiyunkotlin.R
+import com.example.caiyunkotlin.adapter.AdapterClassification
+import com.example.caiyunkotlin.adapter.AdapterLike
 import com.example.caiyunkotlin.databinding.FragmentShopBinding
 
 
@@ -22,5 +25,12 @@ class ShopFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_shop, container, false)
     }
 
+    init {
+        binding.apply {
+            rcClassification.layoutManager = GridLayoutManager(activity, 2)
+            val adapter  = AdapterClassification()
+            rcClassification.adapter = adapter
+        }
+    }
 
 }

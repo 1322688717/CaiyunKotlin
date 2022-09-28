@@ -1,4 +1,10 @@
 package com.example.caiyunkotlin.fragment.shop
 
-class ShopViewModel {
+import androidx.lifecycle.ViewModel
+
+class ShopViewModel : ViewModel(){
+
+    fun getClassification(){
+
+    }
 }
