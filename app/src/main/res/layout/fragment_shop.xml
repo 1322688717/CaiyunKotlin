@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.shop.shopFragment"
-    android:background="@color/color_efefef"
+    android:background="@color/color_fafafa"
     android:orientation="vertical"
     >
 
