@@ -5,6 +5,7 @@ import android.content.Intent
 import com.example.caiyunkotlin.MainActivity
 import com.example.caiyunkotlin.activity.PersonalCenterActivity
 import com.example.caiyunkotlin.activity.SetNameActivity
+import com.example.caiyunkotlin.activity.ShopInformationActivity
 import com.example.caiyunkotlin.activity.WallPaperActivity
 import com.example.caiyunkotlin.login.LoginActivity
 
@@ -38,6 +39,11 @@ class RouterUtil {
 
     fun goLoginActivity(mContext: Context){
         val intent  = Intent(mContext, LoginActivity::class.java)
+        mContext.startActivity(intent)
+    }
+
+    fun goShopInformationActivity(mContext: Context){
+        val intent  = Intent(mContext, ShopInformationActivity::class.java)
         mContext.startActivity(intent)
     }
 

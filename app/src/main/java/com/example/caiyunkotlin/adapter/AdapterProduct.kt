@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.caiyunkotlin.R
 import com.example.caiyunkotlin.activity.WallPaperActivity
+import com.example.caiyunkotlin.utlis.RouterUtil
 import kotlinx.android.synthetic.main.item_like.view.*
 import kotlinx.android.synthetic.main.item_product.view.*
 
@@ -34,6 +35,10 @@ class AdapterProduct (var activity: Activity): RecyclerView.Adapter<AdapterProdu
             .load(activity.getDrawable(R.mipmap.head_picture))
             .apply(options)
             .into(holder.itemView.img_item_Product)
+
+        holder.itemView.cl_product.setOnClickListener {
+            RouterUtil().goShopInformationActivity(activity)
+        }
 
     }
 

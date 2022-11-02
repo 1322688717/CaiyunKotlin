@@ -7,6 +7,7 @@
     android:layout_marginTop="@dimen/dp_5"
     android:layout_marginStart="@dimen/dp_2"
     android:layout_marginEnd="@dimen/dp_2"
+    android:id="@+id/cl_product"
     android:layout_height="wrap_content">
 
     <ImageView

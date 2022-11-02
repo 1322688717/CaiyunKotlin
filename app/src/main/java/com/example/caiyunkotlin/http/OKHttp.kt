@@ -63,26 +63,13 @@ class OKHttp {
             .get()
             .build()
         val httpLoggingInterceptor : HttpLoggingInterceptor = HttpLoggingInterceptor {
-
-//            var i = 0
-//            when (i){
-//                10 ->   Log.e("拦截器", it)
-//            }
-//            i++
-
-
-            //public boolean startsWith(String prefix)
-            //Log.e("拦截器", it.substring(it.indexOf("{"),it.indexOf("}")))
             Log.e("拦截器", it)
 
-            
-           // Log.e("拦截器it.toResponseBody()====",it.toResponseBody().string())
         }
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         okHttpClient = OkHttpClient.Builder()
-            //.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .addInterceptor(httpLoggingInterceptor)
-            //.followRedirects(false)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)

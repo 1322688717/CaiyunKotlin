@@ -18,14 +18,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ShopInformationActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashActivityTheme"
-            >
+            android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

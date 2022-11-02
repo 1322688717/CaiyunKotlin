@@ -26,13 +26,19 @@ class SplashActivity : BaseActivity() {
 
         RequestResponse.huaoService.getUserInfo(token!!).enqueue(object : Callback<Userinfo>{
             override fun onResponse(call: Call<Userinfo>, response: Response<Userinfo>) {
-                if (response.body()!!.data != null){
-                    RouterUtil().goMainActivity(this@SplashActivity)
-                    finish() //关闭当前活动
-                }else{
-                    RouterUtil().goLoginActivity(this@SplashActivity)
-                    finish()
-                }
+                RouterUtil().goMainActivity(this@SplashActivity)
+//                if (response == null){
+//                    RouterUtil().goMainActivity(this@SplashActivity)
+//                }else{
+//                    if (response.body()!!.data != null){
+//                        RouterUtil().goMainActivity(this@SplashActivity)
+//                        finish() //关闭当前活动
+//                    }else{
+//                        RouterUtil().goLoginActivity(this@SplashActivity)
+//                        finish()
+//                    }
+//                }
+
             }
 
             override fun onFailure(call: Call<Userinfo>, t: Throwable) {
